@@ -6,7 +6,7 @@
 ## Usage
 
 ```sh
-$ docker run -d -v /home/sinusbot/data:/sinusbot/data -p 8087:8087 --name sinusbot sinusbot:latest
+$ docker run -d -v /home/sinusbot/data:/sinusbot/data -p 8087:8087 --name sinusbot moonliightz/sinusbot:latest
 ```
 
 - ``` /home/sinusbot/data ``` is the directory on your local machine where your bot files will be stored
