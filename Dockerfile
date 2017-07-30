@@ -55,6 +55,8 @@ RUN apt-get update && \
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
 
+# VOLUME [ "$SINUS_DATA" ]
+
 EXPOSE 8087
 
 ENTRYPOINT [ "./entrypoint.sh" ]
