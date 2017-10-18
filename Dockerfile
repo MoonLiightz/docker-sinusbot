@@ -8,11 +8,13 @@ ENV SINUS_USER="sinusbot" \
     SINUS_GROUPID="3000" \
     SINUS_DIR="/sinusbot" \
     YTDL_BIN="/usr/local/bin/youtube-dl" \
-    TS3_DIR="$SINUS_DIR/TeamSpeak3-Client-linux_amd64" \
     SINUS_VERSION="beta" \
     YTDL_VERSION="latest" \
     TS3_VERSION="3.0.19.4" \
     TS3_OFFSET="25000"
+
+ENV SINUS_DATA_DIR="${SINUS_DIR}/data" \
+    TS3_DIR="${SINUS_DIR}/TeamSpeak3-Client-linux_amd64"
 
 RUN apt-get update && \
     apt-get install -y \
@@ -54,6 +56,8 @@ RUN apt-get update && \
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
+
+VOLUME [ "${SINUS_DATA_DIR}" ]
 
 EXPOSE 8087
 
