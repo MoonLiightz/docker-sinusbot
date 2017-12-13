@@ -1,14 +1,24 @@
 # moonliightz/sinusbot
-This container provides a sinusbot instance. [![](https://images.microbadger.com/badges/image/moonliightz/sinusbot.svg)](https://microbadger.com/images/moonliightz/sinusbot "Get your own image badge on microbadger.com")
+[![Build Status](https://travis-ci.org/MoonLiightz/docker-sinusbot.svg?branch=master)](https://travis-ci.org/MoonLiightz/docker-sinusbot)
+[![](https://images.microbadger.com/badges/image/moonliightz/sinusbot.svg)](https://microbadger.com/images/moonliightz/sinusbot "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/version/moonliightz/sinusbot.svg)](https://microbadger.com/images/moonliightz/sinusbot "Get your own version badge on microbadger.com")
+
+This container provides a sinusbot instance. 
 
 
 ## Table of Contents
+- [Download / Update](#download-update)
 - [Usage](#usage)
 - [Logging](#logging)
 - [Permissions](#permissions)
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
+
+
+## Download / Update
+```sh
+docker pull moonliightz/sinusbot:latest
+```
 
 
 
