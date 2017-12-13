@@ -1,0 +1,21 @@
+language: bash
+services:
+  - docker
+jobs:
+  include:
+    - stage: build and test docker image
+      install:
+        - if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then docker build -t sinusbot:test .; fi
+      before_script:
+        - if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then docker run -d -p 8087:8087 sinusbot:test; fi
+      script:
+        - if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then nc -z -v -w5 127.0.0.1 8087; fi
+    - stage: test docker image from docker hub
+      before_script:
+        - if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then docker run -d -p 8087:8087 moonliightz/sinusbot:latest; fi
+      script:
+        - if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then nc -z -v -w5 127.0.0.1 8087; fi
+notifications:
+  email:
+    on_success: always
+    on_failure: always
