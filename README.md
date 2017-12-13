@@ -7,7 +7,7 @@ This container provides a sinusbot instance.
 
 
 ## Table of Contents
-- [Download / Update](#download-update)
+- [Download / Update](#download--update)
 - [Usage](#usage)
 - [Logging](#logging)
 - [Permissions](#permissions)
