@@ -7,12 +7,21 @@ This container provides a sinusbot instance.
 
 
 ## Table of Contents
+- [Version](#version)
 - [Download / Update](#download--update)
 - [Usage](#usage)
 - [Logging](#logging)
 - [Permissions](#permissions)
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
+
+
+
+## Version
+
+- Sinusbot: 0.11.0-8e5f1a2
+- TeamSpeak: 3.1.7
+
 
 
 ## Download / Update
