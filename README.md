@@ -20,7 +20,7 @@ This container provides a sinusbot instance.
 ## Version
 
 - Sinusbot: 0.11.0-8e5f1a2
-- TeamSpeak: 3.1.7
+- TeamSpeak: 3.1.8
 
 
 
