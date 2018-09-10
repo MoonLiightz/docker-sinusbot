@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-MAINTAINER Patrick Stebbe <info@moonliightz.de>
+LABEL MAINTAINER Patrick Stebbe <info@moonliightz.de>
 
 ENV SINUS_USER="sinusbot" \
     SINUS_GROUP="sinusbot" \
@@ -10,7 +10,7 @@ ENV SINUS_USER="sinusbot" \
     YTDL_BIN="/usr/local/bin/youtube-dl" \
     SINUS_DL_URL="https://www.sinusbot.com/dl/sinusbot.current.tar.bz2" \
     YTDL_VERSION="latest" \
-    TS3_VERSION="3.1.8" \
+    TS3_VERSION="3.2.1" \
     TS3_OFFSET="1386"
 
 ENV SINUS_DATA_DIR="${SINUS_DIR}/data" \
@@ -47,9 +47,15 @@ RUN apt-get update && \
     mkdir -p "$SINUS_DIR" "$TS3_DIR" "$TS3_DIR/plugins" && \
     wget -qO- "$SINUS_DL_URL" | \
     tar -xjf- -C "$SINUS_DIR" && \
-    wget -q -O- "http://dl.4players.de/ts/releases/$TS3_VERSION/TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" | \
-    tail -n +$TS3_OFFSET | \
-    tar xzf - -C "$TS3_DIR" && \
+    # wget -q -O- "http://dl.4players.de/ts/releases/$TS3_VERSION/TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" | \
+    # tail -n +$TS3_OFFSET | \
+    # tar xzf - -C "$TS3_DIR" && \
+    cd "$SINUS_DIR" && \
+    wget -q -O "TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" \
+        "http://dl.4players.de/ts/releases/$TS3_VERSION/TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" && \
+    chmod 755 "TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" && \
+    yes | "./TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" && \
+    rm -f "TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" && \
     rm "$TS3_DIR/xcbglintegrations/libqxcb-glx-integration.so" && \
     mv -f "$SINUS_DIR/config.ini.dist" "$SINUS_DIR/config.ini" && \
     sed -i "s|TS3Path = .*|TS3Path = \"$TS3_DIR/ts3client_linux_amd64\"|g" "$SINUS_DIR/config.ini" && \
