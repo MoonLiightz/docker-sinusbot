@@ -10,7 +10,7 @@ ENV SINUS_USER="sinusbot" \
     YTDL_BIN="/usr/local/bin/youtube-dl" \
     SINUS_DL_URL="https://www.sinusbot.com/dl/sinusbot.current.tar.bz2" \
     YTDL_VERSION="latest" \
-    TS3_VERSION="3.2.1" \
+    TS3_VERSION="3.2.5" \
     TS3_OFFSET="1386"
 
 ENV SINUS_DATA_DIR="${SINUS_DIR}/data" \

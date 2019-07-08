@@ -19,8 +19,8 @@ This container provides a sinusbot instance.
 
 ## Version
 
-- Sinusbot: 0.14.3-0e747fd
-- TeamSpeak: 3.2.1
+- Sinusbot: 1.0.0-beta.1-06a54d7
+- TeamSpeak: 3.2.5
 
 
 
