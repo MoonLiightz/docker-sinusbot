@@ -10,7 +10,7 @@ ENV SINUS_USER="sinusbot" \
     YTDL_BIN="/usr/local/bin/youtube-dl" \
     SINUS_DL_URL="https://www.sinusbot.com/dl/sinusbot.current.tar.bz2" \
     YTDL_VERSION="latest" \
-    TS3_VERSION="3.2.5" \
+    TS3_VERSION="3.3.0" \
     TS3_OFFSET="1386"
 
 ENV SINUS_DATA_DIR="${SINUS_DIR}/data" \
@@ -32,11 +32,14 @@ RUN apt-get update && \
       libegl1-mesa \
       x11-xkb-utils \
       libasound2 \
+      libpci3 \
+      libxslt1.1 \
+      libxkbcommon0 \
       python \
       bzip2 \
       sqlite3 \
-      ca-certificates && \
-    groupadd -g "$SINUS_GROUPID" -r "$SINUS_GROUP" && \
+      ca-certificates
+RUN groupadd -g "$SINUS_GROUPID" -r "$SINUS_GROUP" && \
     useradd -u "$SINUS_USERID" -r -g "$SINUS_GROUP" -d "$SINUS_DIR" "$SINUS_USER" && \
     update-ca-certificates && \
     wget --no-check-certificate -q -O "$YTDL_BIN" "https://yt-dl.org/downloads/$YTDL_VERSION/youtube-dl" && \
@@ -52,7 +55,7 @@ RUN apt-get update && \
     # tar xzf - -C "$TS3_DIR" && \
     cd "$SINUS_DIR" && \
     wget -q -O "TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" \
-        "http://dl.4players.de/ts/releases/$TS3_VERSION/TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" && \
+        "https://files.teamspeak-services.com/releases/client/$TS3_VERSION/TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" && \
     chmod 755 "TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" && \
     yes | "./TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" && \
     rm -f "TeamSpeak3-Client-linux_amd64-$TS3_VERSION.run" && \
